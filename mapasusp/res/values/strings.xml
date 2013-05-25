@@ -4,5 +4,8 @@
     <string name="app_name">Mapas USP</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="edit_message">EDITAR</string>
+    <string name="button_send">MANDAR</string>
+    <string name="title_activity_display_message">DisplayMessageActivity</string>
 
 </resources>
