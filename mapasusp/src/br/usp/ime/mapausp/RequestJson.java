@@ -15,19 +15,19 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.os.AsyncTask;
 
-public class PagodeMAster extends AsyncTask<String, Void, String> {
+public class RequestJson extends AsyncTask<String, Void, String> {
 
 
 	@Override
 	protected String doInBackground(String... urls) {
 		try {
-			return metodoPagode(urls[0]);
+			return getJson(urls[0]);
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
-	private String metodoPagode(String url) {
+	private String getJson(String url) {
 		StringBuilder builder = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
 		HttpGet httpGet = new HttpGet(url);
