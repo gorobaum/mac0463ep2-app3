@@ -39,15 +39,14 @@ public class MainActivity extends Activity {
 		criaListenerParaABusca();
 		criaMarkers();
 	}
-	
+
 	private void centralizaNaUSP() {
-		LatLng latLgnUsuario = new LatLng(-23.560052,-46.730926);
+		LatLng latLgnUsuario = new LatLng(-23.560052, -46.730926);
 		CameraUpdate moveCameraToUsr = CameraUpdateFactory
 				.newLatLng(latLgnUsuario);
 		CameraUpdate zoomCamera = CameraUpdateFactory.zoomBy(12);
 		googleMap.moveCamera(moveCameraToUsr);
 		googleMap.moveCamera(zoomCamera);
-
 	}
 
 	private void criaMarkers() {
