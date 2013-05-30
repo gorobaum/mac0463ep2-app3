@@ -12,14 +12,16 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import android.os.AsyncTask;
 
-public class RequestJson extends AsyncTask<String, Void, String> {
+public class RequestJson extends AsyncTask<String, Void, JSONArray> {
 
 
 	@Override
-	protected String doInBackground(String... urls) {
+	protected JSONArray doInBackground(String... urls) {
 		try {
 			return getJson(urls[0]);
 		} catch (Exception e) {
@@ -27,7 +29,7 @@ public class RequestJson extends AsyncTask<String, Void, String> {
 		}
 	}
 
-	private String getJson(String url) {
+	private JSONArray getJson(String url) {
 		StringBuilder builder = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
 		HttpGet httpGet = new HttpGet(url);
@@ -51,6 +53,12 @@ public class RequestJson extends AsyncTask<String, Void, String> {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return builder.toString();
+		JSONArray jsonArray = null;
+		try {
+			jsonArray = new JSONArray(builder.toString());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return jsonArray;
 	}
 }

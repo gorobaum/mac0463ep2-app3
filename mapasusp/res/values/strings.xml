@@ -7,5 +7,6 @@
     <string name="edit_message">EDITAR</string>
     <string name="button_send">MANDAR</string>
     <string name="title_activity_display_message">DisplayMessageActivity</string>
+    <string name="buscaMapa">Buscar no Mapa</string>
 
 </resources>
