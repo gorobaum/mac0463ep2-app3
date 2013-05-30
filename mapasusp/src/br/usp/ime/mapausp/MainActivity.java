@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -24,22 +26,28 @@ public class MainActivity extends Activity {
 	private List<MarkerOptions> markers = new ArrayList<MarkerOptions>();
 
 	private GoogleMap googleMap;
-	
+
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		googleMap = ((MapFragment) getFragmentManager()
-				.findFragmentById(R.id.map)).getMap();
-		centralizaMapaNaUsp();
+		googleMap = ((MapFragment) getFragmentManager().findFragmentById(
+				R.id.map)).getMap();
+		googleMap.setMyLocationEnabled(true);
+		centralizaNaUSP();
 		criaListenerParaABusca();
 		criaMarkers();
 	}
+	
+	private void centralizaNaUSP() {
+		LatLng latLgnUsuario = new LatLng(-23.560052,-46.730926);
+		CameraUpdate moveCameraToUsr = CameraUpdateFactory
+				.newLatLng(latLgnUsuario);
+		CameraUpdate zoomCamera = CameraUpdateFactory.zoomBy(12);
+		googleMap.moveCamera(moveCameraToUsr);
+		googleMap.moveCamera(zoomCamera);
 
-	private void centralizaMapaNaUsp() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	private void criaMarkers() {
@@ -64,7 +72,8 @@ public class MainActivity extends Activity {
 
 	private void criaListenerParaABusca() {
 		EditText editText = (EditText) findViewById(R.id.buscaMapa);
-		editText.setOnEditorActionListener(new MapaBuscaListener(markers, googleMap));
+		editText.setOnEditorActionListener(new MapaBuscaListener(markers,
+				googleMap));
 	}
 
 	private void criaNovoMarker(Double lat, Double log, String nome) {
