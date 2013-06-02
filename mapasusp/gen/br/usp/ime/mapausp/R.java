@@ -182,9 +182,11 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020018;
     }
     public static final class id {
-        public static final int action_settings=0x7f050007;
+        public static final int action_settings=0x7f050009;
         public static final int buscaMapa=0x7f050005;
+        public static final int categoria=0x7f050007;
         public static final int hybrid=0x7f050004;
+        public static final int infos=0x7f050008;
         public static final int map=0x7f050006;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
@@ -193,6 +195,7 @@ containing a value of this type.
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int info=0x7f030001;
     }
     public static final class menu {
         public static final int display_message=0x7f090000;
